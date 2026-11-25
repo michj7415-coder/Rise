@@ -12,7 +12,14 @@ import {Finale} from './scenes/Finale';
 import {ListeAlerte, ListeCoches} from './scenes/Listes';
 import {Pastilles} from './scenes/Pastilles';
 import {TitreCompteur} from './scenes/TitreCompteur';
-import {COULEURS, DIRECTION, VOLUME_MUSIQUE} from './theme';
+import {BarresEditorial} from './scenes/editorial/BarresComparaison';
+import {CourbeEditorial} from './scenes/editorial/CourbeIllustrative';
+import {DeuxPanneauxEditorial} from './scenes/editorial/DeuxPanneaux';
+import {FinaleEditorial} from './scenes/editorial/Finale';
+import {ListeAlerteEditorial, ListeCochesEditorial} from './scenes/editorial/Listes';
+import {PastillesEditorial} from './scenes/editorial/Pastilles';
+import {TitreCompteurEditorial} from './scenes/editorial/TitreCompteur';
+import {COULEURS, DIRECTION, MODELE, VOLUME_MUSIQUE} from './theme';
 import type {Scene} from './types';
 
 export type PropsChapitre = {
@@ -21,7 +28,22 @@ export type PropsChapitre = {
   verifier?: boolean; // active le contrôle des débordements (images fixes)
 };
 
-const COMPOSANTS: Record<Scene['type'], React.FC<{props: any; dureeImages: number}>> = {
+type Composant = React.FC<{props: any; dureeImages: number}>;
+
+// Modèle « éditorial » (par défaut) : grands titres, colonnes, filets fins.
+const EDITORIAL: Record<Scene['type'], Composant> = {
+  'titre-compteur': TitreCompteurEditorial,
+  'courbe-illustrative': CourbeEditorial,
+  'barres-comparaison': BarresEditorial,
+  pastilles: PastillesEditorial,
+  'deux-panneaux': DeuxPanneauxEditorial,
+  'liste-coches': ListeCochesEditorial,
+  'liste-alerte': ListeAlerteEditorial,
+  finale: FinaleEditorial,
+};
+
+// Modèle « cartes » (première version).
+const CARTES: Record<Scene['type'], Composant> = {
   'titre-compteur': TitreCompteur,
   'courbe-illustrative': CourbeIllustrative,
   'barres-comparaison': BarresComparaison,
@@ -31,6 +53,8 @@ const COMPOSANTS: Record<Scene['type'], React.FC<{props: any; dureeImages: numbe
   'liste-alerte': ListeAlerte,
   finale: Finale,
 };
+
+const COMPOSANTS = MODELE === 'cartes' ? CARTES : EDITORIAL;
 
 const FONDU = 10; // images de fondu en fin de scène
 

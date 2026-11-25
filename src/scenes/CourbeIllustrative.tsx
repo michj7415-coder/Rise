@@ -11,7 +11,7 @@ import {COULEURS, POLICE_TEXTE} from '../theme';
 import type {PropsCourbe} from '../types';
 
 // Tracé lissé passant exactement par les points (courbe monotone).
-const trace = (pts: {x: number; y: number}[]) => {
+export const trace = (pts: {x: number; y: number}[]) => {
   if (pts.length < 3) return pts.map((p, i) => `${i ? 'L' : 'M'}${p.x},${p.y}`).join(' ');
   let d = `M${pts[0].x},${pts[0].y}`;
   for (let i = 0; i < pts.length - 1; i++) {

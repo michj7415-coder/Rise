@@ -227,6 +227,23 @@ Le style est identique pour tous les modules et se règle dans `src/theme.ts` :
   (SIL Open Font License) et incluses dans le projet, donc pas besoin d'Internet ;
 - pied de page discret « Formation Mesures et Confiance ».
 
+**Modèle de mise en page : « Éditorial »** (par défaut). Grand titre avec une barre turquoise,
+très grands chiffres, étiquettes en capitales, filets fins plutôt que des cartes.
+En 16:9 : le titre est dans une colonne à gauche, le contenu à droite.
+En 9:16 : le titre en haut, le contenu en dessous.
+Le code de ces scènes est dans `src/scenes/editorial/`.
+
+L'ancien modèle « Cartes » est conservé (`src/scenes/`). Pour le retrouver, change
+`MODELE_PAR_DEFAUT` en `'cartes'` dans `src/theme.ts`.
+
+D'autres palettes de couleurs sont aussi décrites dans `src/theme.ts` (`DIRECTIONS`).
+La palette par défaut reste « bleu-nuit », celle de la charte ci-dessus.
+
+Deux commandes servent à comparer des styles sans toucher aux vidéos :
+
+- `npm run directions` : la même scène avec chaque palette de couleurs (`out/directions/`) ;
+- `npm run maquettes` : la scène « barres-comparaison » dans 5 mises en page (`out/maquettes/`).
+
 **Format 9:16 (TikTok)** : le haut (≈ 180 px) et le bas (≈ 400 px) de l'image sont laissés
 sans contenu important, car TikTok y affiche ses boutons et la description. Le pied de page,
 lui, est placé dans la zone basse et peut être en partie recouvert sur TikTok.

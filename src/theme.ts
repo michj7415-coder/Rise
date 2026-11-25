@@ -121,6 +121,13 @@ const choix = (getInputProps() as {direction?: string}).direction ?? DIRECTION_P
 export const DIRECTION = DIRECTIONS[choix] ?? DIRECTIONS[DIRECTION_PAR_DEFAUT];
 
 export const COULEURS = DIRECTION.couleurs;
+
+// Modèle de mise en page : « editorial » (par défaut) ou « cartes » (première version).
+export const MODELES_DISPONIBLES = ['editorial', 'cartes'] as const;
+export const MODELE_PAR_DEFAUT = 'editorial';
+const modeleChoisi = (getInputProps() as {modele?: string}).modele ?? MODELE_PAR_DEFAUT;
+export const MODELE: (typeof MODELES_DISPONIBLES)[number] =
+  (MODELES_DISPONIBLES as readonly string[]).includes(modeleChoisi) ? (modeleChoisi as 'editorial' | 'cartes') : MODELE_PAR_DEFAUT;
 export const POLICE_TITRE = DIRECTION.policeTitre;
 export const POLICE_TEXTE = DIRECTION.policeTexte;
 export const POLICE_CHIFFRES = DIRECTION.policeChiffres;
