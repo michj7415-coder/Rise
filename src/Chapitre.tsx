@@ -13,7 +13,7 @@ import {ListeAlerte, ListeCoches} from './scenes/Listes';
 import {Pastilles} from './scenes/Pastilles';
 import {TitreCompteur} from './scenes/TitreCompteur';
 import {BarresEditorial} from './scenes/editorial/BarresComparaison';
-import {CourbeEditorial} from './scenes/editorial/CourbeIllustrative';
+import {Courbe3DEditorial} from './scenes/editorial/Courbe3D';
 import {DeuxPanneauxEditorial} from './scenes/editorial/DeuxPanneaux';
 import {FinaleEditorial} from './scenes/editorial/Finale';
 import {ListeAlerteEditorial, ListeCochesEditorial} from './scenes/editorial/Listes';
@@ -33,7 +33,7 @@ type Composant = React.FC<{props: any; dureeImages: number}>;
 // Modèle « éditorial » (par défaut) : grands titres, colonnes, filets fins.
 const EDITORIAL: Record<Scene['type'], Composant> = {
   'titre-compteur': TitreCompteurEditorial,
-  'courbe-illustrative': CourbeEditorial,
+  'courbe-illustrative': Courbe3DEditorial,
   'barres-comparaison': BarresEditorial,
   pastilles: PastillesEditorial,
   'deux-panneaux': DeuxPanneauxEditorial,
