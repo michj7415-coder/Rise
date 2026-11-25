@@ -1,0 +1,31 @@
+{
+  "name": "mesures-et-confiance-videos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Génération des vidéos de la formation « Mesures et Confiance » avec Remotion",
+  "type": "module",
+  "scripts": {
+    "studio": "node tools/prepare.mjs && remotion studio src/index.ts",
+    "render": "node tools/render.mjs",
+    "render:all": "node tools/render.mjs --all",
+    "stills": "node tools/stills.mjs",
+    "prepare-projet": "node tools/prepare.mjs",
+    "verifier-code": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/inter": "5.3.0",
+    "@fontsource/space-grotesk": "5.3.0",
+    "@remotion/bundler": "4.0.547",
+    "@remotion/cli": "4.0.547",
+    "@remotion/media-utils": "4.0.547",
+    "@remotion/renderer": "4.0.547",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.547"
+  },
+  "devDependencies": {
+    "@types/node": "22.9.0",
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  }
+}

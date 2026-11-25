@@ -1,0 +1,149 @@
+{
+  "id": "module-04-ch1",
+  "module": 4,
+  "chapitre": 1,
+  "titre": "Rétention d'eau",
+  "musique": null,
+  "scenes": [
+    {
+      "id": "01-titre",
+      "type": "titre-compteur",
+      "duree": 8,
+      "voix": "Tu te pèses le matin et la balance affiche un kilo de plus. Ton visage semble gonflé. Pas de panique : ce n'est probablement pas du gras.",
+      "props": {
+        "titre": "Rétention d'eau",
+        "compteur": { "depart": 0, "arrivee": 1.2, "decimales": 1, "prefixe": "+", "suffixe": " kg" },
+        "legende": "Ce matin sur la balance"
+      }
+    },
+    {
+      "id": "02-variation",
+      "type": "courbe-illustrative",
+      "duree": 12,
+      "voix": "Ton poids varie naturellement de un à deux kilos sur une journée. L'eau, le sel, le sommeil et le stress en sont les principales causes.",
+      "props": {
+        "titre": "1 à 2 kg de variation par jour",
+        "mention": "Exemple illustratif",
+        "uniteX": "h",
+        "uniteY": "kg",
+        "points": [
+          { "x": 7, "y": 70 },
+          { "x": 23, "y": 72 }
+        ]
+      }
+    },
+    {
+      "id": "03-sel-potassium",
+      "type": "barres-comparaison",
+      "duree": 16,
+      "voix": "Premier suspect : le sel. Trop de sodium et pas assez de potassium favorisent la rétention d'eau. Vise moins de deux mille milligrammes de sodium par jour, soit environ cinq grammes de sel, et au moins trois mille cinq cent dix milligrammes de potassium, d'abord avec des fruits, des légumes et des légumineuses.",
+      "props": {
+        "titre": "Le sel et le potassium",
+        "echelle": { "min": 0, "max": 4000, "libelleMin": "0", "libelleMax": "4 000" },
+        "barres": [
+          {
+            "libelle": "Sodium à ne pas dépasser",
+            "valeur": 2000,
+            "texteValeur": "2 000 mg par jour",
+            "couleur": "ambre",
+            "repere": { "valeur": 2000, "libelle": "2 000" }
+          },
+          {
+            "libelle": "Potassium à atteindre",
+            "valeur": 3510,
+            "texteValeur": "3 510 mg par jour",
+            "couleur": "turquoise"
+          }
+        ],
+        "note": "Sodium : environ 5 g de sel. Potassium : fruits, légumes, légumineuses. Repères de l'OMS, adulte en bonne santé."
+      }
+    },
+    {
+      "id": "04-autres-causes",
+      "type": "pastilles",
+      "duree": 12,
+      "voix": "Le stress, le manque de sommeil, l'alcool, la chaleur et le cycle menstruel jouent aussi un rôle.",
+      "props": {
+        "titre": "Les autres causes",
+        "pastilles": ["Stress", "Manque de sommeil", "Alcool", "Chaleur", "Cycle menstruel"]
+      }
+    },
+    {
+      "id": "05-eau-gras",
+      "type": "deux-panneaux",
+      "duree": 10,
+      "voix": "Attention : perdre de l'eau, ce n'est pas perdre du gras. Seul un déficit calorique fait perdre du gras.",
+      "props": {
+        "titre": "Eau et gras, deux choses différentes",
+        "panneaux": [
+          { "titre": "Perdre de l'eau", "texte": "revient dès que tu bois", "couleur": "neutre" },
+          { "titre": "Perdre du gras", "texte": "demande un déficit calorique", "couleur": "turquoise" }
+        ]
+      }
+    },
+    {
+      "id": "06-ce-qui-aide",
+      "type": "liste-coches",
+      "duree": 12,
+      "voix": "Ce qui aide vraiment : marcher chaque jour, dormir assez, limiter le sel, manger des aliments riches en potassium, et bouger régulièrement.",
+      "props": {
+        "titre": "Ce qui aide vraiment",
+        "elements": ["Marcher chaque jour", "Dormir assez", "Moins de sel, plus de potassium", "Bouger régulièrement"]
+      }
+    },
+    {
+      "id": "07-transpirer",
+      "type": "liste-alerte",
+      "duree": 12,
+      "voix": "Une séance qui fait transpirer élimine un peu d'eau, mais elle revient dès que tu bois. Ne cherche pas à transpirer plus, avec un sauna ou des vêtements chauffants. Bois avant, pendant et après l'effort.",
+      "props": {
+        "titre": "Transpirer ne dégonfle pas",
+        "elements": [
+          { "texte": "L'eau perdue revient quand tu bois", "alerte": false },
+          { "texte": "Pas de sauna ni de vêtements chauffants", "alerte": true },
+          { "texte": "Bois avant, pendant et après l'effort", "alerte": false }
+        ]
+      }
+    },
+    {
+      "id": "08-a-eviter",
+      "type": "liste-alerte",
+      "duree": 10,
+      "voix": "Pas de diurétiques, de tisanes drainantes ni de détox sans avis médical. Et ne limite jamais ton eau pour dégonfler.",
+      "props": {
+        "titre": "À éviter",
+        "elements": [
+          { "texte": "Pas de diurétiques, tisanes drainantes ni détox sans avis médical", "alerte": true },
+          { "texte": "Ne limite jamais ton eau pour dégonfler", "alerte": true }
+        ]
+      }
+    },
+    {
+      "id": "09-consulter",
+      "type": "pastilles",
+      "duree": 12,
+      "voix": "Consulte un médecin si le gonflement dure, s'il est douloureux, soudain, ou d'un seul côté. Même chose en cas d'essoufflement, de prise de poids rapide en quelques jours, ou si la rétention apparaît après un nouveau médicament.",
+      "props": {
+        "titre": "Quand consulter un médecin",
+        "ton": "alerte",
+        "pastilles": [
+          "Gonflement qui dure, douloureux ou soudain",
+          "D'un seul côté (jambe, visage)",
+          "Essoufflement",
+          "Prise de poids rapide",
+          "Après un nouveau médicament"
+        ]
+      }
+    },
+    {
+      "id": "10-finale",
+      "type": "finale",
+      "duree": 8,
+      "voix": "Cette semaine, construis ta routine du matin et tiens le défi de sept jours. Ce module ne remplace pas un avis médical.",
+      "props": {
+        "titre": "Routine du matin + défi de 7 jours",
+        "mention": "Ce module ne remplace pas un avis médical"
+      }
+    }
+  ]
+}
