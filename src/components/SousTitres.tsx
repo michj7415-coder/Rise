@@ -3,7 +3,7 @@ import React, {useMemo} from 'react';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {planifier} from '../decoupage';
 import {useMise} from '../layout';
-import {COULEURS, POLICE_TEXTE} from '../theme';
+import {POLICE_TEXTE} from '../theme';
 import {typo} from '../typo';
 
 export const SousTitres: React.FC<{voix: string; dureeImages: number; verifier?: boolean}> = ({
@@ -63,13 +63,13 @@ const boite = (m: ReturnType<typeof useMise>): React.CSSProperties => ({
   maxWidth: '100%',
   boxSizing: 'border-box',
   background: 'rgba(8, 15, 27, 0.88)',
-  border: `1px solid ${COULEURS.bordure}`,
+  border: '1px solid rgba(255, 255, 255, 0.12)',
   borderRadius: 14,
   padding: m.vertical ? '16px 26px' : '12px 28px',
   fontFamily: POLICE_TEXTE,
   fontWeight: 600,
   fontSize: m.tailleSousTitres,
   lineHeight: 1.3,
-  color: COULEURS.texte,
+  color: '#FFFFFF', // toujours blanc sur bandeau sombre, quelle que soit la direction artistique
   textAlign: 'center',
 });

@@ -5,7 +5,7 @@ import {Cadre} from '../components/Cadre';
 import {ecart, glissement, progression} from '../components/animation';
 import {IconeAlerte, IconeCoche, IconeInfo} from '../components/Icones';
 import {useMise} from '../layout';
-import {COULEURS, POLICE_TEXTE} from '../theme';
+import {COULEURS, DIRECTION, POLICE_TEXTE} from '../theme';
 import type {PropsListeAlerte, PropsListeCoches} from '../types';
 import {typo} from '../typo';
 
@@ -42,7 +42,7 @@ const Liste: React.FC<{titre: string; lignes: Ligne[]; dureeImages: number}> = (
                 gap: m.vertical ? 28 : 30,
                 background: COULEURS.carte,
                 border: `2px solid ${alerte ? `${COULEURS.ambre}99` : COULEURS.bordure}`,
-                borderRadius: 20,
+                borderRadius: Math.min(DIRECTION.rayon, 24),
                 padding: m.vertical ? '30px 34px' : '24px 34px',
               }}
             >

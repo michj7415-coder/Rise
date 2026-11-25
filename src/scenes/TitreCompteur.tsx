@@ -6,7 +6,7 @@ import {Carte} from '../components/Carte';
 import {glissement, progression} from '../components/animation';
 import {nombre} from '../format';
 import {useMise} from '../layout';
-import {COULEURS, POLICE_TEXTE, POLICE_TITRE} from '../theme';
+import {COULEURS, POLICE_CHIFFRES, POLICE_TEXTE, POLICE_TITRE} from '../theme';
 import type {PropsTitreCompteur} from '../types';
 import {typo} from '../typo';
 
@@ -51,7 +51,7 @@ export const TitreCompteur: React.FC<{props: PropsTitreCompteur; dureeImages: nu
           <div
             data-texte
             style={{
-              fontFamily: POLICE_TITRE,
+              fontFamily: POLICE_CHIFFRES,
               fontWeight: 700,
               fontSize: m.vertical ? 170 : 150,
               lineHeight: 1,

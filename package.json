@@ -10,10 +10,17 @@
     "render:all": "node tools/render.mjs --all",
     "stills": "node tools/stills.mjs",
     "prepare-projet": "node tools/prepare.mjs",
-    "verifier-code": "tsc --noEmit"
+    "verifier-code": "tsc --noEmit",
+    "directions": "node tools/directions.mjs",
+    "maquettes": "node tools/maquettes.mjs"
   },
   "dependencies": {
+    "@fontsource/dm-sans": "5.3.0",
+    "@fontsource/fraunces": "5.3.0",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@fontsource/ibm-plex-sans": "5.3.0",
     "@fontsource/inter": "5.3.0",
+    "@fontsource/sora": "5.3.0",
     "@fontsource/space-grotesk": "5.3.0",
     "@remotion/bundler": "4.0.547",
     "@remotion/cli": "4.0.547",

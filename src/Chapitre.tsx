@@ -12,7 +12,7 @@ import {Finale} from './scenes/Finale';
 import {ListeAlerte, ListeCoches} from './scenes/Listes';
 import {Pastilles} from './scenes/Pastilles';
 import {TitreCompteur} from './scenes/TitreCompteur';
-import {COULEURS, VOLUME_MUSIQUE} from './theme';
+import {COULEURS, DIRECTION, VOLUME_MUSIQUE} from './theme';
 import type {Scene} from './types';
 
 export type PropsChapitre = {
@@ -53,10 +53,20 @@ export const Chapitre: React.FC<PropsChapitre> = ({chapitre, durees, verifier}) 
   let debut = 0;
   return (
     <AbsoluteFill data-toile style={{background: COULEURS.fond}}>
-      {/* Léger halo pour donner de la profondeur au fond */}
-      <AbsoluteFill
-        style={{background: `radial-gradient(ellipse at 50% 30%, ${COULEURS.carte} 0%, ${COULEURS.fond} 70%)`}}
-      />
+      {/* Fond : léger halo, fine grille ou couleur unie selon la direction artistique */}
+      {DIRECTION.motif === 'halo' && (
+        <AbsoluteFill
+          style={{background: `radial-gradient(ellipse at 50% 30%, ${COULEURS.carte} 0%, ${COULEURS.fond} 70%)`}}
+        />
+      )}
+      {DIRECTION.motif === 'grille' && (
+        <AbsoluteFill
+          style={{
+            backgroundImage: `linear-gradient(${COULEURS.bordure}55 1px, transparent 1px), linear-gradient(90deg, ${COULEURS.bordure}55 1px, transparent 1px)`,
+            backgroundSize: '48px 48px',
+          }}
+        />
+      )}
       {musique && (
         <Audio
           src={staticFile(musique)}

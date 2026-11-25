@@ -1,10 +1,11 @@
 // Déclare deux vidéos par chapitre : <chapitre>-16x9 et <chapitre>-9x16.
 import React from 'react';
-import {CalculateMetadataFunction, Composition, staticFile} from 'remotion';
+import {CalculateMetadataFunction, Composition, Folder, staticFile} from 'remotion';
 import {getAudioDurationInSeconds} from '@remotion/media-utils';
 import {Chapitre, PropsChapitre} from './Chapitre';
 import {chapitres} from './generated/chapitres';
 import {FPS, MARGE_APRES_VOIX} from './theme';
+import {Maquette, MODELES, PropsMaquette} from './maquettes/Maquette';
 
 // Si une voix off existe pour la scène, sa durée remplace celle du JSON.
 const calculerDurees: CalculateMetadataFunction<PropsChapitre> = async ({props}) => {
@@ -46,5 +47,25 @@ export const Racine: React.FC = () => (
         />
       </React.Fragment>
     ))}
+    {/* Maquettes de mise en page (comparaison de modèles) */}
+    <Folder name="maquettes">
+      {MODELES.flatMap((modele) =>
+        [
+          ['16x9', 1920, 1080],
+          ['9x16', 1080, 1920],
+        ].map(([format, width, height]) => (
+          <Composition
+            key={`${modele}-${format}`}
+            id={`maquette-${modele}-${format}`}
+            component={Maquette}
+            width={width as number}
+            height={height as number}
+            fps={FPS}
+            durationInFrames={16 * FPS}
+            defaultProps={{modele, chapitre: 'module-04-ch1', scene: '03-sel-potassium'} as PropsMaquette}
+          />
+        )),
+      )}
+    </Folder>
   </>
 );

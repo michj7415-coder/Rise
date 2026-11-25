@@ -5,7 +5,7 @@ import {useCurrentFrame, useVideoConfig} from 'remotion';
 import {Cadre} from '../components/Cadre';
 import {glissement, progression} from '../components/animation';
 import {useMise} from '../layout';
-import {COULEURS, couleurAccent, POLICE_TEXTE, POLICE_TITRE} from '../theme';
+import {COULEURS, couleurAccent, POLICE_CHIFFRES, POLICE_TEXTE} from '../theme';
 import type {PropsBarres} from '../types';
 import {typo} from '../typo';
 
@@ -44,8 +44,8 @@ export const BarresComparaison: React.FC<{props: PropsBarres; dureeImages: numbe
                   <div
                     data-texte
                     style={{
-                      fontFamily: POLICE_TITRE,
-                      fontWeight: 700,
+                      fontFamily: POLICE_CHIFFRES,
+                      fontWeight: 600,
                       fontSize: m.tailleTexteGrand,
                       color: accent,
                       whiteSpace: 'nowrap',

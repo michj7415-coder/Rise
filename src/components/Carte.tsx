@@ -1,5 +1,5 @@
 import React from 'react';
-import {COULEURS} from '../theme';
+import {COULEURS, DIRECTION} from '../theme';
 
 export const Carte: React.FC<{
   children: React.ReactNode;
@@ -10,7 +10,7 @@ export const Carte: React.FC<{
     style={{
       background: COULEURS.carte,
       border: `2px solid ${bordure}`,
-      borderRadius: 24,
+      borderRadius: DIRECTION.rayon,
       ...style,
     }}
   >
