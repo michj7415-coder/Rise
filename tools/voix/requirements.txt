@@ -1,0 +1,3 @@
+# Outil optionnel de voix de synthèse (Chatterbox multilingue, licence MIT).
+# Installation : voir README, section « Voix de synthèse ».
+chatterbox-tts==0.1.7
