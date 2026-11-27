@@ -1,0 +1,102 @@
+{
+  "module": 1,
+  "title": "Bases et mesures de départ",
+  "scenes": [
+    {
+      "id": "s01-intro",
+      "durationSec": 55,
+      "narration": "Bienvenue dans RISE, module 1. Pendant les huit à neuf semaines qui viennent, tu vas suivre ta progression avec des repères chiffrés, sans promesse miracle. Pour que ça marche, il faut un point de départ. Dans ce module, tu fixes un objectif réaliste sur huit semaines et tu prends toutes tes mesures de départ, pour pouvoir mesurer ta progression sans t'obséder. Avant de commencer, une chose importante : ce programme est réservé aux adultes, il ne remplace pas un avis médical. Si ton rapport à la nourriture ou à ton corps te fait souffrir, parle-en d'abord à un professionnel de santé avant de continuer.",
+      "onScreen": ["RISE · Module 1", "Bases et mesures de départ", "Réservé aux adultes · Ne remplace pas un avis médical"],
+      "visual": "Titre RISE sur fond marine, barre ambre qui se dessine. À partir de 'Avant de commencer', une carte jaune de prudence avec le texte : 'Si ton rapport à la nourriture ou à ton corps te fait souffrir, parle-en d'abord à un professionnel de santé.'",
+      "animation": "Titre qui monte doucement, carte prudence qui apparaît et reste jusqu'à la fin de la scène."
+    },
+    {
+      "id": "s02-plan",
+      "durationSec": 40,
+      "narration": "Voici ce qu'on va faire. D'abord, fixer un objectif réaliste. Ensuite, prendre tes photos de départ. Puis mesurer ton tour de taille. Suivre ton poids en tendance. Et mesurer ta masse grasse, si tu le souhaites. Enfin, on parlera d'un point essentiel : suivre tout ça sans s'obséder.",
+      "onScreen": ["1 Objectif réaliste", "2 Photos de départ", "3 Tour de taille", "4 Poids en tendance", "5 Masse grasse", "6 Suivre sans s'obséder"],
+      "visual": "Liste de 6 étapes en cartes numérotées qui apparaissent une à une, chacune avec une icône en trait fin (cible, appareil photo, mètre ruban, balance, courbe, cœur).",
+      "animation": "Chaque carte entre au moment où la voix la nomme."
+    },
+    {
+      "id": "s03-objectif",
+      "durationSec": 70,
+      "narration": "Première étape : l'objectif. Un bon objectif est précis et mesurable. Par exemple : moins trois centimètres de tour de taille, ou dormir mieux. À l'inverse, être plus beau ne se mesure pas, et ne te dit pas quoi faire. Sur huit semaines, on vise des progrès petits et réguliers. Écris ton objectif en une phrase, avec une mesure, et garde-le sous les yeux. Si tu hésites, choisis plus petit : un objectif atteint motive, un objectif trop grand décourage.",
+      "onScreen": ["Précis et mesurable", "« −3 cm de tour de taille »", "« Dormir mieux »", "✗ « Être plus beau »"],
+      "visual": "Écran divisé : à gauche deux bons exemples en cartes vertes avec une coche, à droite un mauvais exemple en carte grise barrée. Ensuite une carte 'Mon objectif' avec un champ qui se remplit par une phrase d'exemple.",
+      "animation": "Les bons exemples apparaissent, puis le mauvais se barre en douceur."
+    },
+    {
+      "id": "s04-photos",
+      "durationSec": 65,
+      "narration": "Deuxième étape : les photos de départ. Prends-toi de face, de profil et de dos. Garde la même lumière, la même tenue et le même endroit à chaque fois, sinon la comparaison ne veut rien dire. Tu les reprendras toutes les deux semaines. Ces photos restent privées : elles sont pour toi, pas pour les réseaux sociaux. Et surtout, ne les compare pas à celles des autres.",
+      "onScreen": ["Face · Profil · Dos", "Même lumière, même tenue, même endroit", "À reprendre toutes les 2 semaines", "Photos privées"],
+      "visual": "Trois cadres photo vides en forme de silhouette schématique sans visage (face, profil, dos), puis un calendrier simple qui montre un repère toutes les 2 semaines. Un cadenas apparaît pour 'privées'.",
+      "animation": "Les trois cadres se posent un à un, le cadenas se ferme à la fin."
+    },
+    {
+      "id": "s05-taille",
+      "durationSec": 60,
+      "narration": "Troisième étape : le tour de taille. Utilise un mètre ruban souple. Place-le au niveau du nombril, sans serrer, en restant détendu. Mesure-toi le matin, à jeun, une fois par semaine. Note le chiffre toujours dans les mêmes conditions : c'est ce qui rend la mesure utile.",
+      "onScreen": ["Mètre ruban souple", "Au niveau du nombril, détendu", "Le matin, à jeun", "1 fois par semaine"],
+      "visual": "Schéma simple d'une silhouette sans visage avec un mètre ruban au niveau du nombril, puis une icône de réveil (matin) et un calendrier avec une case par semaine.",
+      "animation": "Le ruban se dessine autour de la silhouette, puis les trois repères apparaissent."
+    },
+    {
+      "id": "s06-poids",
+      "durationSec": 70,
+      "narration": "Quatrième étape : le poids en tendance. Pèse-toi une à trois fois par semaine, toujours dans les mêmes conditions. Ce qui compte n'est pas le chiffre du jour, mais la moyenne. Pourquoi ? Parce que ton poids varie naturellement de un à deux kilos selon l'eau, le sel et le sommeil. Une pesée haute après un repas salé ne veut pas dire que tu as pris du gras. Regarde la courbe de la moyenne sur plusieurs semaines : c'est elle qui te dit où tu en es.",
+      "onScreen": ["1 à 3 pesées par semaine", "Mêmes conditions", "Il varie de 1 à 2 kg : eau, sel, sommeil", "On regarde la moyenne"],
+      "visual": "Un graphique en points qui monte et descend d'un jour à l'autre, puis une courbe de moyenne lissée qui se trace par-dessus. Étiquettes 'eau', 'sel', 'sommeil' reliées aux petites variations.",
+      "animation": "Les points apparaissent, puis la courbe de moyenne se dessine lentement."
+    },
+    {
+      "id": "s07-masse-grasse",
+      "durationSec": 65,
+      "narration": "Cinquième étape : la masse grasse, si tu veux la suivre. Mesure-la avec le même appareil, au même moment, le matin et à jeun. Attention : une balance à impédance a souvent trois à cinq points d'écart avec la réalité. Donc on ne suit pas le chiffre exact, on suit l'évolution, avec le même appareil.",
+      "onScreen": ["Même appareil, même moment", "Matin, à jeun", "Écart fréquent : 3 à 5 points", "On suit l'évolution, pas le chiffre exact"],
+      "visual": "Une balance à impédance schématique, puis une cible avec une zone floue autour du chiffre ('3 à 5 points') pour montrer l'imprécision, puis une flèche d'évolution.",
+      "animation": "La zone floue s'élargit autour du chiffre, puis la flèche d'évolution apparaît."
+    },
+    {
+      "id": "s08-reperes",
+      "durationSec": 85,
+      "narration": "Pour t'aider à te situer, voici des repères de masse grasse chez l'adulte. Graisse essentielle, le minimum vital : deux à cinq pour cent chez l'homme, dix à treize chez la femme. Sportif : six à treize pour l'homme, quatorze à vingt pour la femme. Forme : quatorze à dix-sept pour l'homme, vingt et un à vingt-quatre pour la femme. Moyenne : dix-huit à vingt-quatre pour l'homme, vingt-cinq à trente et un pour la femme. Surpoids ou obésité : à partir de vingt-cinq pour l'homme et trente-deux pour la femme. Ce sont des ordres de grandeur, pas un diagnostic. Deux personnes au même pourcentage peuvent avoir un aspect très différent : ne te compare ni à un dessin ni aux autres.",
+      "onScreen": ["Repères indicatifs (adultes)", "Ordres de grandeur, pas un diagnostic"],
+      "visual": "Tableau en 5 colonnes (Graisse essentielle, Sportif, Forme, Moyenne, Surpoids / obésité) avec, pour chaque colonne, une silhouette schématique sans visage pour l'homme et pour la femme, de la plus fine à la plus ronde, et leur pourcentage dessous : Homme 2-5 %, 6-13 %, 14-17 %, 18-24 %, 25 % et plus. Femme 10-13 %, 14-20 %, 21-24 %, 25-31 %, 32 % et plus. La colonne 'Forme' est mise en avant en vert. Une mention en bas : 'Ordres de grandeur, pas un diagnostic'.",
+      "animation": "Les colonnes se révèlent une par une, au rythme de la voix. Pas de zoom brusque."
+    },
+    {
+      "id": "s09-fourchette",
+      "durationSec": 70,
+      "narration": "Maintenant, ton objectif de masse grasse, s'il y en a un. Il se fixe en fourchette, pas en chiffre unique. Par exemple : de vingt-quatre pour cent à vingt à vingt-deux pour cent. Ça représente un à trois points maximum sur huit semaines, avec une mesure toutes les deux à quatre semaines. Et une règle de sécurité : ne descends pas sous la zone « forme » sans l'avis d'un professionnel de santé.",
+      "onScreen": ["Objectif en fourchette", "Ex. : de 24 % à 20-22 %", "1 à 3 points maximum sur 8 semaines", "Ne descends pas sous la zone « forme » sans avis d'un professionnel de santé"],
+      "visual": "Une règle graduée horizontale avec une fourchette colorée de 24 % vers 20-22 %. Une carte jaune de prudence apparaît avec la règle de sécurité, et une frise de 8 semaines avec une mesure toutes les 2 à 4 semaines.",
+      "animation": "La fourchette se dessine de gauche à droite, la carte prudence entre en dernier et reste visible."
+    },
+    {
+      "id": "s10-sans-obsession",
+      "durationSec": 60,
+      "narration": "Dernier point, peut-être le plus important : suivre sans t'obséder. Limite la fréquence de tes mesures. Ne te compare pas aux autres. Et rappelle-toi que ton énergie, ton sommeil et ton humeur comptent autant que les chiffres. Si te fixer un chiffre te stresse, te pousse à te restreindre ou à t'obséder, ne le suis pas. Cet objectif n'est pas adapté si tu as, ou si tu as eu, un trouble du comportement alimentaire. Dans ce cas, parle-en à un professionnel de santé.",
+      "onScreen": ["Fréquence limitée", "Pas de comparaison", "Énergie, sommeil, humeur : ça compte aussi", "Si un chiffre te stresse, ne le suis pas"],
+      "visual": "Trois icônes (calendrier espacé, deux silhouettes barrées d'un signe de comparaison, cœur/énergie) puis une carte jaune de prudence avec la phrase sur le stress et les troubles du comportement alimentaire.",
+      "animation": "Les trois icônes entrent doucement ; la carte prudence reste affichée au moins 6 secondes."
+    },
+    {
+      "id": "s11-recap",
+      "durationSec": 50,
+      "narration": "Pour résumer. Un objectif précis et mesurable. Des photos, un tour de taille, un poids en tendance et, si tu veux, une masse grasse en fourchette. Le tout dans les mêmes conditions, sans t'obséder. Cette semaine, tu as quatre choses à faire : lire ta fiche d'une page sur la façon de prendre tes mesures, tes photos et ta masse grasse ; relever le défi, c'est-à-dire faire les mesures et photos de départ et écrire ton objectif en fourchette ; faire le mini-quiz de trois questions ; et remplir ton tableau de suivi avec le poids, le tour de taille, la masse grasse, l'objectif, l'appareil et les dates. Rendez-vous au module 2, pour le sommeil.",
+      "onScreen": ["Cette semaine", "Fiche d'une page", "Défi : mesures et photos de départ, objectif en fourchette", "Mini-quiz de 3 questions", "Tableau de suivi", "Prochain module : Sommeil et énergie"],
+      "visual": "Récapitulatif en 4 cartes (fiche, défi, quiz, tableau de suivi) avec une case à cocher qui se coche, puis une carte 'Module 2 · Sommeil et énergie'.",
+      "animation": "Chaque carte se coche quand la voix la cite."
+    },
+    {
+      "id": "s12-outro",
+      "durationSec": 20,
+      "narration": "Ce programme ne remplace pas un avis médical. À tout de suite pour le module 2.",
+      "onScreen": ["Ce programme ne remplace pas un avis médical", "RISE · Module 1 / 9"],
+      "visual": "Fond marine, le logo texte RISE centré, la mention de prudence en dessous.",
+      "animation": "Fondu vers le noir."
+    }
+  ]
+}
