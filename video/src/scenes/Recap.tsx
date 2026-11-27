@@ -18,8 +18,8 @@ const Ligne: React.FC<{e: ElementRecap}> = ({e}) => {
         <div style={{width: m.v ? 50 : 46, height: m.v ? 50 : 46, borderRadius: 10, border: `3px solid ${C.menthe}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
           <IconeCoche taille={m.v ? 44 : 40} trace={coche} />
         </div>
-        <e.Icone taille={m.v ? 52 : 48} couleur={C.texteDoux} />
-        <Texte taille={m.v ? 38 : 34} gras={600} couleur={C.gris}>
+        <e.Icone taille={m.v ? 70 : 70} couleur={C.menthe} />
+        <Texte taille={m.v ? 42 : 38} gras={600} couleur={C.gris}>
           {e.texte}
         </Texte>
       </Carte>
@@ -30,13 +30,13 @@ const Ligne: React.FC<{e: ElementRecap}> = ({e}) => {
 export const Recap: React.FC<{titre: string; elements: ElementRecap[]; suite?: string; debutSuite?: number}> = ({titre, elements, suite, debutSuite = 0}) => {
   const m = useMise();
   return (
-    <div style={{display: 'flex', flexDirection: 'column', gap: m.v ? 24 : 22}}>
+    <div style={{flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: m.v ? 24 : 24}}>
       <Entree debut={elements[0]?.debut - 10}>
-        <Texte taille={m.v ? 60 : 54} titre couleur={C.gris}>
+        <Texte taille={m.titre} titre couleur={C.gris}>
           {titre}
         </Texte>
       </Entree>
-      <div style={{display: 'grid', gridTemplateColumns: m.v ? '1fr' : '1fr 1fr', gap: m.v ? 16 : 20}}>
+      <div style={{flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: m.v ? '1fr' : '1fr 1fr', gridAutoRows: '1fr', gap: m.v ? 18 : 22}}>
         {elements.map((e, i) => (
           <Ligne key={i} e={e} />
         ))}

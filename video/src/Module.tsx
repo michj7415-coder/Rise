@@ -6,6 +6,8 @@ import {TransitionSeries, linearTiming} from '@remotion/transitions';
 import {fade} from '@remotion/transitions/fade';
 import {Controle} from './composants/Controle';
 import {EnTete} from './composants/EnTete';
+import {Fond} from './composants/Fond';
+import {FriseEtapes} from './composants/FriseEtapes';
 import {Progression} from './composants/Progression';
 import {SousTitres} from './composants/SousTitres';
 import {useMise} from './mise';
@@ -34,7 +36,7 @@ export const Module: React.FC<PropsModule> = ({module, durees, verifier}) => {
   const d = durees ?? scenes.map((s) => Math.round(s.durationSec * fps));
   return (
     <AbsoluteFill data-toile data-limite-bas={m.zoneSousTitres} style={{background: C.marine}}>
-      <AbsoluteFill style={{background: `radial-gradient(ellipse at 30% 20%, rgba(11,122,107,0.16) 0%, ${C.marine} 60%)`}} />
+      <Fond />
       <TransitionSeries>
         {scenes.map((scene, i) => {
           const chemin = cheminAudio(module, scene.id);
@@ -42,8 +44,9 @@ export const Module: React.FC<PropsModule> = ({module, durees, verifier}) => {
             <React.Fragment key={scene.id}>
               {i > 0 && <TransitionSeries.Transition presentation={fade()} timing={linearTiming({durationInFrames: TRANSITION})} />}
               <TransitionSeries.Sequence durationInFrames={d[i]} name={scene.id}>
-                <AbsoluteFill style={{background: C.marine}}>
-                  <AbsoluteFill style={{background: `radial-gradient(ellipse at 30% 20%, rgba(11,122,107,0.16) 0%, ${C.marine} 60%)`}} />
+                <AbsoluteFill>
+                  <Fond />
+                  <FriseEtapes active={config.etapes[scene.id] ?? null} />
                   {audioExiste(chemin) && <Audio src={staticFile(chemin)} />}
                   <Scene visuels={config.scenes} scene={scene} dureeImages={d[i]} cle={(mot) => imageCle(scene.narration, mot, d[i], fps)} />
                   <SousTitres narration={scene.narration} dureeImages={d[i]} verifier={verifier} />

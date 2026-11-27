@@ -19,7 +19,7 @@ export const Table: React.FC<{titre: string; mention?: string; reperes: Repere[]
   return (
     <Zone centre={false} gap={m.v ? 24 : 22}>
       <Entree debut={0}>
-        <Texte taille={m.v ? 56 : 50} titre couleur={C.gris}>
+        <Texte taille={m.v ? 64 : 60} titre couleur={C.gris}>
           {titre}
         </Texte>
       </Entree>

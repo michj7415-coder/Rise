@@ -117,3 +117,26 @@ export const IconeDifferent: React.FC<P> = (p) => (
 );
 
 export const ICONES_ETAPES = [IconeCible, IconePhoto, IconeRuban, IconeBalance, IconeCourbe, IconeCoeur];
+
+export const IconeSoleil: React.FC<P> = (p) => (
+  <Svg {...p}>
+    <circle cx="24" cy="24" r="8" />
+    <path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5L37 37M37 11l-3.5 3.5M14.5 33.5L11 37" />
+  </Svg>
+);
+export const IconeTenue: React.FC<P> = (p) => (
+  <Svg {...p}>
+    <path d="M17 8l-10 6 4 8 5-3v21h16V19l5 3 4-8-10-6c-1 3-3.5 5-7 5s-6-2-7-5z" />
+  </Svg>
+);
+export const IconeLieu: React.FC<P> = (p) => (
+  <Svg {...p}>
+    <path d="M24 43s-13-12-13-23a13 13 0 0 1 26 0c0 11-13 23-13 23z" />
+    <circle cx="24" cy="20" r="5" />
+  </Svg>
+);
+export const IconeDrapeau: React.FC<P> = (p) => (
+  <Svg {...p}>
+    <path d="M12 43V6M12 8h22l-5 7 5 7H12" />
+  </Svg>
+);

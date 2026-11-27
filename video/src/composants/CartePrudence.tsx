@@ -20,21 +20,21 @@ export const CartePrudence: React.FC<{titre?: string; texte?: string; debut: num
         style={{
           background: C.prudenceFond,
           borderRadius: RAYON,
-          padding: m.v ? '30px 34px' : '28px 36px',
+          padding: m.v ? '38px 40px' : '30px 40px',
           display: 'flex',
           gap: 24,
           alignItems: 'flex-start',
         }}
       >
-        <IconeAttention taille={m.v ? 54 : 50} couleur={C.prudenceTexte} />
+        <IconeAttention taille={m.v ? 64 : 54} couleur={C.prudenceTexte} />
         <div style={{display: 'flex', flexDirection: 'column', gap: 10}}>
           {titre && (
-            <div data-texte data-lignes-max={4} style={{fontFamily: POLICE_TEXTE, fontWeight: 700, fontSize: m.texte, lineHeight: 1.25, color: C.prudenceTexte}}>
+            <div data-texte data-lignes-max={4} style={{fontFamily: POLICE_TEXTE, fontWeight: 700, fontSize: m.v ? 50 : m.texte, lineHeight: 1.25, color: C.prudenceTexte}}>
               {typo(titre)}
             </div>
           )}
           {texte && (
-            <div data-texte data-lignes-max={6} style={{fontFamily: POLICE_TEXTE, fontWeight: 500, fontSize: m.v ? 38 : 34, lineHeight: 1.35, color: C.prudenceTexte}}>
+            <div data-texte data-lignes-max={6} style={{fontFamily: POLICE_TEXTE, fontWeight: 500, fontSize: m.v ? 42 : 36, lineHeight: 1.35, color: C.prudenceTexte}}>
               {typo(texte)}
             </div>
           )}

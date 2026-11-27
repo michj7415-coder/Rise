@@ -31,15 +31,15 @@ export const SousTitres: React.FC<{narration: string; dureeImages: number; verif
     textAlign: 'center',
   };
   // Zone : en 16:9 les 12 % du bas ; en 9:16 la partie haute des 20 % du bas (au-dessus de l'interface TikTok).
-  const bas = m.v ? Math.round(m.zoneSousTitres * 0.42) : 16;
-  const haut = m.v ? m.zoneSousTitres - 30 : m.zoneSousTitres - 8;
+  const bas = m.v ? Math.round(m.zoneSousTitres * 0.42) : 30;
+  const haut = m.v ? m.zoneSousTitres - 30 : m.zoneSousTitres - 2;
   return (
     <div
       data-zone="sous-titres"
       style={{
         position: 'absolute',
-        left: m.margeX - (m.v ? 24 : 0),
-        right: m.margeX - (m.v ? 24 : 0),
+        left: m.margeX,
+        right: m.margeX,
         bottom: bas,
         height: haut - bas,
         display: 'flex',

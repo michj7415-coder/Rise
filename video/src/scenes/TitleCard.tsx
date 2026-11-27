@@ -12,20 +12,20 @@ export const TitleCard: React.FC<{surTitre?: string; titre: string; sousTitre?: 
     <div style={{display: 'flex', flexDirection: 'column', gap: m.v ? 26 : 22}}>
       {surTitre && (
         <Entree debut={debut}>
-          <Texte taille={m.v ? 36 : 32} titre gras={500} couleur={C.menthe} style={{letterSpacing: 3}}>
+          <Texte taille={m.v ? 44 : 36} titre gras={500} couleur={C.menthe} style={{letterSpacing: 3}}>
             {surTitre}
           </Texte>
         </Entree>
       )}
       <Entree debut={debut + 6} distance={40}>
-        <Texte taille={m.v ? 104 : 104} titre couleur={C.gris}>
+        <Texte taille={m.v ? 104 : 116} titre couleur={C.gris}>
           {titre}
         </Texte>
       </Entree>
-      <div style={{height: 8, width: (m.v ? 260 : 320) * barre, borderRadius: 4, background: C.ambre}} />
+      <div style={{height: 10, width: (m.v ? 340 : 380) * barre, borderRadius: 5, background: C.ambre}} />
       {sousTitre && (
         <Entree debut={debut + 30}>
-          <Texte taille={m.petit} couleur={C.texte}>
+          <Texte taille={m.v ? 42 : 36} couleur={C.texte}>
             {sousTitre}
           </Texte>
         </Entree>

@@ -11,12 +11,13 @@ export const RegleFourchette: React.FC<{
   cibleMax: number; // ex. 22
   debut: number;
   unite?: string;
-}> = ({largeur: L, depart, cibleMin, cibleMax, debut, unite = ' %'}) => {
+  echelle?: number;
+}> = ({largeur: L, depart, cibleMin, cibleMax, debut, unite = ' %', echelle: e = 1}) => {
   const min = Math.min(cibleMin, depart) - 2;
   const max = Math.max(cibleMax, depart) + 2;
   const x = (v: number) => 20 + ((v - min) / (max - min)) * (L - 40);
-  const H = 190;
-  const base = 120;
+  const H = 190 * e;
+  const base = 120 * e;
   const p = useTrace(debut, 50);
   const bande = useTrace(debut + 40, 30);
   const graduations = [];
@@ -26,13 +27,13 @@ export const RegleFourchette: React.FC<{
     <svg width={L} height={H} style={{overflow: 'visible'}}>
       <line x1={20} x2={L - 20} y1={base} y2={base} stroke={C.texteDoux} strokeWidth={3} />
       {graduations.map((v) => (
-        <line key={v} x1={x(v)} x2={x(v)} y1={base} y2={base - (etiquettes.includes(v) ? 26 : 14)} stroke={C.texteDoux} strokeWidth={2} />
+        <line key={v} x1={x(v)} x2={x(v)} y1={base} y2={base - (etiquettes.includes(v) ? 26 : 14) * e} stroke={C.texteDoux} strokeWidth={2} />
       ))}
       {/* Zone cible */}
-      <rect x={x(cibleMin)} y={base - 70} width={(x(cibleMax) - x(cibleMin)) * bande} height={44} rx={10} fill={C.vert} stroke={C.menthe} strokeWidth={2} />
+      <rect x={x(cibleMin)} y={base - 70 * e} width={(x(cibleMax) - x(cibleMin)) * bande} height={44 * e} rx={10} fill={C.vert} stroke={C.menthe} strokeWidth={2} />
       {/* Flèche du départ vers la zone cible */}
       <path
-        d={`M${x(depart)},${base - 48} L${x(cibleMax) + 10},${base - 48}`}
+        d={`M${x(depart)},${base - 48 * e} L${x(cibleMax) + 10},${base - 48 * e}`}
         stroke={C.ambre}
         strokeWidth={5}
         strokeLinecap="round"
@@ -40,10 +41,10 @@ export const RegleFourchette: React.FC<{
         strokeDasharray={1}
         strokeDashoffset={1 - p}
       />
-      <path d={`M${x(cibleMax) + 24},${base - 60} L${x(cibleMax) + 10},${base - 48} L${x(cibleMax) + 24},${base - 36}`} fill="none" stroke={C.ambre} strokeWidth={5} strokeLinecap="round" opacity={p > 0.95 ? 1 : 0} />
-      <circle cx={x(depart)} cy={base - 48} r={12} fill={C.ambre} />
+      <path d={`M${x(cibleMax) + 24 * e},${base - 60 * e} L${x(cibleMax) + 10},${base - 48 * e} L${x(cibleMax) + 24 * e},${base - 36 * e}`} fill="none" stroke={C.ambre} strokeWidth={5} strokeLinecap="round" opacity={p > 0.95 ? 1 : 0} />
+      <circle cx={x(depart)} cy={base - 48 * e} r={12 * e} fill={C.ambre} />
       {etiquettes.map((v) => (
-        <text key={v} x={x(v)} y={base + 50} textAnchor="middle" fontFamily={POLICE_TITRE} fontWeight={700} fontSize={36} fill={v === depart ? C.ambre : C.menthe}>
+        <text key={v} x={x(v)} y={base + 50 * e} textAnchor="middle" fontFamily={POLICE_TITRE} fontWeight={700} fontSize={36 * e} fill={v === depart ? C.ambre : C.menthe}>
           {`${v}${unite}`}
         </text>
       ))}
