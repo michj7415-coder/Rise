@@ -17,7 +17,9 @@ export const TableauReperes: React.FC<{reperes: Repere[]; debuts: number[]; libe
   const hSil = m.v ? 104 : 240;
   const Cellule: React.FC<{r: Repere; i: number}> = ({r, i}) => {
     const accent = r.enAvant ? C.menthe : C.bordure;
-    const fond = r.enAvant ? 'rgba(11,122,107,0.28)' : C.marineCarte;
+    const fond = r.enAvant
+      ? 'linear-gradient(170deg, rgba(79,209,188,0.30) 0%, rgba(11,122,107,0.35) 100%)'
+      : 'linear-gradient(170deg, rgba(36,58,88,0.78) 0%, rgba(15,27,45,0.78) 100%)';
     const coul = r.enAvant ? C.menthe : C.texteDoux;
     const paire = (type: 'homme' | 'femme', valeur: string, libelle: string) => (
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6}}>
@@ -33,8 +35,9 @@ export const TableauReperes: React.FC<{reperes: Repere[]; debuts: number[]; libe
             height: '100%',
             boxSizing: 'border-box',
             background: fond,
-            border: `2px solid ${accent}`,
+            border: `1.5px solid ${r.enAvant ? accent : 'rgba(159,176,196,0.22)'}`,
             borderRadius: RAYON,
+            boxShadow: r.enAvant ? '0 0 50px rgba(79,209,188,0.25), 0 24px 50px rgba(0,0,0,0.35)' : '0 20px 44px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.08)',
             padding: m.v ? '8px 22px' : '18px 10px',
             justifyContent: m.v ? 'flex-start' : 'space-between',
             display: 'flex',

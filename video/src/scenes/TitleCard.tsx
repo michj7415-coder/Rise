@@ -18,11 +18,11 @@ export const TitleCard: React.FC<{surTitre?: string; titre: string; sousTitre?: 
         </Entree>
       )}
       <Entree debut={debut + 6} distance={40}>
-        <Texte taille={m.v ? 104 : 116} titre couleur={C.gris}>
+        <Texte taille={m.v ? 104 : 116} titre couleur={C.gris} degrade>
           {titre}
         </Texte>
       </Entree>
-      <div style={{height: 10, width: (m.v ? 340 : 380) * barre, borderRadius: 5, background: C.ambre}} />
+      <div style={{height: 10, width: (m.v ? 340 : 380) * barre, borderRadius: 5, background: `linear-gradient(90deg, ${C.ambre}, #FFD27A)`, boxShadow: `0 0 24px ${C.ambre}66`}} />
       {sousTitre && (
         <Entree debut={debut + 30}>
           <Texte taille={m.v ? 42 : 36} couleur={C.texte}>

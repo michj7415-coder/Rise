@@ -8,7 +8,7 @@ import {MAX_SOUS_TITRE, decouperPhrases, fractionCle, instantCle, planSousTitres
 
 export const racine = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const FPS = 30;
-export const TRANSITION = 12;
+export const TRANSITION = 18;
 // Navigateur : Remotion télécharge le sien ; on peut en imposer un avec REMOTION_BROWSER_EXECUTABLE.
 export const navigateur = process.env.REMOTION_BROWSER_EXECUTABLE || null;
 export const FORMATS = {'16x9': {largeur: 1920, hauteur: 1080}, '9x16': {largeur: 1080, hauteur: 1920}};

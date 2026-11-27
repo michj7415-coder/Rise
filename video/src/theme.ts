@@ -44,6 +44,6 @@ export const POLICE_TEXTE = policesLocales
   : chargerInter('normal', {weights: ['400', '500', '600', '700'], subsets: ['latin', 'latin-ext']}).fontFamily;
 
 export const FPS = 30;
-export const TRANSITION = 12; // images de fondu entre deux scènes
+export const TRANSITION = 18; // images de transition 3D entre deux scènes (0,6 s)
 export const RAYON = 18;
 export const PRUDENCE_MIN = 6; // secondes minimum d'affichage d'une carte de prudence

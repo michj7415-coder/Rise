@@ -18,8 +18,9 @@ export const CartePrudence: React.FC<{titre?: string; texte?: string; debut: num
       <div
         data-prudence
         style={{
-          background: C.prudenceFond,
+          background: `linear-gradient(160deg, #FFF8E8 0%, ${C.prudenceFond} 60%, #FBEBC4 100%)`,
           borderRadius: RAYON,
+          boxShadow: '0 24px 60px rgba(0,0,0,0.40), 0 0 0 1px rgba(242,177,52,0.35)',
           padding: m.v ? '38px 40px' : '30px 40px',
           display: 'flex',
           gap: 24,

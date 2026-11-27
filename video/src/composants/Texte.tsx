@@ -12,8 +12,9 @@ export const Texte: React.FC<{
   couleur?: string;
   centre?: boolean;
   lignesMax?: number;
+  degrade?: boolean; // titre en dégradé blanc → menthe
   style?: React.CSSProperties;
-}> = ({children, taille, titre, gras, couleur = C.texte, centre, lignesMax = 2, style}) => (
+}> = ({children, taille, titre, gras, couleur = C.texte, centre, lignesMax = 2, degrade, style}) => (
   <div
     data-texte
     data-lignes-max={lignesMax}
@@ -25,6 +26,9 @@ export const Texte: React.FC<{
       letterSpacing: titre ? -0.5 : 0,
       color: couleur,
       textAlign: centre ? 'center' : 'left',
+      ...(degrade
+        ? {background: `linear-gradient(100deg, #FFFFFF 0%, ${C.gris} 45%, ${C.menthe} 120%)`, WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent'}
+        : {}),
       ...style,
     }}
   >

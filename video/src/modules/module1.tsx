@@ -85,14 +85,25 @@ const Rond: React.FC<{Icone: Icone; taille: number; couleur?: string; accent?: b
       height: taille,
       borderRadius: taille / 2,
       flexShrink: 0,
-      background: accent ? 'rgba(79,209,188,0.16)' : 'rgba(79,209,188,0.07)',
-      border: `2px solid ${accent ? C.menthe : C.bordure}`,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      padding: 2.5,
+      boxSizing: 'border-box',
+      background: accent ? `linear-gradient(140deg, ${C.menthe}, ${C.vert} 55%, rgba(79,209,188,0.15))` : 'linear-gradient(140deg, rgba(159,176,196,0.45), rgba(42,63,92,0.4))',
+      boxShadow: accent ? `0 0 ${taille * 0.28}px rgba(79,209,188,0.28), 0 12px 30px rgba(0,0,0,0.35)` : '0 10px 24px rgba(0,0,0,0.3)',
     }}
   >
-    <Icone taille={taille * 0.56} couleur={couleur} />
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        borderRadius: '50%',
+        background: `radial-gradient(circle at 35% 30%, rgba(79,209,188,${accent ? 0.22 : 0.1}) 0%, ${C.marine} 75%)`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Icone taille={taille * 0.54} couleur={couleur} />
+    </div>
   </div>
 );
 
@@ -224,7 +235,7 @@ const S03: React.FC<PropsScene> = ({scene, cle}) => {
         <Zone gap={m.v ? 60 : 50}>
           <Entree debut={cle('Un bon objectif')} style={{display: 'flex', alignItems: 'center', gap: 28}}>
             <Rond Icone={IconeCible} taille={m.v ? 120 : 110} accent />
-            <Texte taille={m.titre} titre couleur={C.gris}>
+            <Texte taille={m.titre} titre couleur={C.gris} degrade>
               {entete}
             </Texte>
           </Entree>
@@ -234,7 +245,7 @@ const S03: React.FC<PropsScene> = ({scene, cle}) => {
       <Phase de={debutCarte}>
         <Zone gap={m.v ? 60 : 46}>
           <Entree debut={debutCarte}>
-            <Texte taille={m.titre} titre couleur={C.gris}>
+            <Texte taille={m.titre} titre couleur={C.gris} degrade>
               {entete}
             </Texte>
           </Entree>
@@ -289,7 +300,7 @@ const S04: React.FC<PropsScene> = ({scene, cle}) => {
         <Zone gap={m.v ? 50 : 36}>
           <div style={{flex: 1, minHeight: 0, display: 'flex', gap: m.v ? 22 : 40}}>{(['face', 'profil', 'dos'] as const).map((v, i) => cadre(v, i, m.v ? 440 : 470, 8))}</div>
           <Entree debut={20}>
-            <Texte taille={m.titre} titre couleur={C.gris} centre>
+            <Texte taille={m.titre} titre couleur={C.gris} centre degrade>
               {vues}
             </Texte>
           </Entree>
@@ -332,7 +343,7 @@ const S04: React.FC<PropsScene> = ({scene, cle}) => {
             </div>
           </div>
           <Entree debut={t4 + 4}>
-            <Texte taille={m.titre} titre couleur={C.gris} centre>
+            <Texte taille={m.titre} titre couleur={C.gris} centre degrade>
               {privees}
             </Texte>
           </Entree>
@@ -437,6 +448,9 @@ const S06: React.FC<PropsScene> = ({scene, cle}) => {
   const [pesees, conditions, varie, moyenne] = scene.onScreen;
   const t2 = cle('Ce qui compte');
   const largeur = m.L - 2 * m.margeX;
+  const frame = useCurrentFrame();
+  // La carte du graphique se redresse doucement, puis garde une légère inclinaison 3D.
+  const inclinaison = interpolate(frame, [t2, t2 + 40], [28, 8], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <>
       <Phase de={0} a={t2}>
@@ -448,7 +462,7 @@ const S06: React.FC<PropsScene> = ({scene, cle}) => {
       </Phase>
       <Phase de={t2}>
         <Zone gap={m.v ? 40 : 26}>
-          <Carte style={{padding: m.v ? '30px 20px 10px' : '30px 30px 10px'}}>
+          <Carte style={{padding: m.v ? '30px 20px 10px' : '30px 30px 10px', transform: `perspective(1800px) rotateX(${inclinaison}deg)`, transformOrigin: '50% 100%'}}>
             <CourbePoids
               largeur={largeur - (m.v ? 44 : 64)}
               hauteur={m.v ? 560 : 440}
@@ -516,7 +530,7 @@ const S07: React.FC<PropsScene> = ({scene, cle}) => {
             <MemeAppareil debut={t3 + 8} />
           </Entree>
           <Entree debut={t3 + 4}>
-            <Texte taille={m.titre} titre couleur={C.gris}>
+            <Texte taille={m.titre} titre couleur={C.gris} degrade>
               {evolution}
             </Texte>
           </Entree>
@@ -546,7 +560,7 @@ const S09: React.FC<PropsScene> = ({scene, cle}) => {
   return (
     <Zone gap={m.v ? 46 : 24}>
       <Entree debut={0}>
-        <Texte taille={m.titre} titre couleur={C.gris}>
+        <Texte taille={m.titre} titre couleur={C.gris} degrade>
           {titre}
         </Texte>
       </Entree>
@@ -641,16 +655,34 @@ const S12: React.FC<PropsScene> = ({scene, dureeImages}) => {
   const noir = interpolate(frame, [dureeImages - 30, dureeImages - 2], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const anneau = useTrace(0, 50);
   const d = m.v ? 820 : 600;
+  const rotLogo = interpolate(frame, [0, 36], [-70, 0], {extrapolateRight: 'clamp', easing: (t) => 1 - Math.pow(1 - t, 3)});
+  const orbite = frame * 1.2;
   return (
     <>
       <Zone gap={m.v ? 70 : 40} style={{alignItems: 'center'}}>
         <div style={{position: 'relative', width: d, height: d, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <svg width={d} height={d} style={{position: 'absolute', inset: 0}}>
+          <svg width={d} height={d} style={{position: 'absolute', inset: 0, transform: `perspective(1400px) rotateX(62deg) rotateZ(${orbite}deg)`}}>
             <circle cx={d / 2} cy={d / 2} r={d / 2 - 6} fill="none" stroke={C.vert} strokeWidth={4} pathLength={1} strokeDasharray={1} strokeDashoffset={1 - anneau} transform={`rotate(-90 ${d / 2} ${d / 2})`} />
             <circle cx={d / 2} cy={d / 2} r={d / 2 - 40} fill="none" stroke={C.bordure} strokeWidth={2} strokeDasharray="3 12" />
           </svg>
           <Entree debut={0}>
-            <div style={{fontFamily: POLICE_TITRE, fontWeight: 700, fontSize: m.v ? 270 : 220, letterSpacing: 14, color: C.gris, lineHeight: 1}}>RISE</div>
+            <div
+              style={{
+                fontFamily: POLICE_TITRE,
+                fontWeight: 700,
+                fontSize: m.v ? 270 : 220,
+                letterSpacing: 14,
+                lineHeight: 1,
+                background: `linear-gradient(100deg, #FFFFFF 0%, ${C.gris} 50%, ${C.menthe} 110%)`,
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                transform: `perspective(1200px) rotateY(${rotLogo}deg)`,
+                filter: 'drop-shadow(0 18px 40px rgba(79,209,188,0.25))',
+              }}
+            >
+              RISE
+            </div>
           </Entree>
         </div>
         <Entree debut={20}>

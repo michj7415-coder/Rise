@@ -3,8 +3,9 @@
 import React from 'react';
 import {AbsoluteFill, Audio, getStaticFiles, staticFile, useVideoConfig} from 'remotion';
 import {TransitionSeries, linearTiming} from '@remotion/transitions';
-import {fade} from '@remotion/transitions/fade';
+import {Camera} from './composants/Camera';
 import {Controle} from './composants/Controle';
+import {easingTransition, transition3D} from './composants/Transition3D';
 import {EnTete} from './composants/EnTete';
 import {Fond} from './composants/Fond';
 import {FriseEtapes} from './composants/FriseEtapes';
@@ -40,13 +41,15 @@ export const Module: React.FC<PropsModule> = ({module, durees, mots, verifier}) 
           const chemin = cheminAudio(module, scene.id);
           return (
             <React.Fragment key={scene.id}>
-              {i > 0 && <TransitionSeries.Transition presentation={fade()} timing={linearTiming({durationInFrames: TRANSITION})} />}
+              {i > 0 && <TransitionSeries.Transition presentation={transition3D()} timing={linearTiming({durationInFrames: TRANSITION, easing: easingTransition})} />}
               <TransitionSeries.Sequence durationInFrames={d[i]} name={scene.id}>
                 <AbsoluteFill>
                   <Fond />
                   <FriseEtapes active={config.etapes[scene.id] ?? null} />
                   {audioExiste(chemin) && <Audio src={staticFile(chemin)} />}
-                  <Scene visuels={config.scenes} scene={scene} dureeImages={d[i]} cle={(mot) => imageCle(scene.narration, mot, d[i], fps, mots?.[scene.id])} />
+                  <Camera>
+                    <Scene visuels={config.scenes} scene={scene} dureeImages={d[i]} cle={(mot) => imageCle(scene.narration, mot, d[i], fps, mots?.[scene.id])} />
+                  </Camera>
                   <SousTitres narration={scene.narration} dureeImages={d[i]} mots={mots?.[scene.id]} verifier={verifier} />
                   {verifier && <Controle scene={scene.id} />}
                 </AbsoluteFill>
