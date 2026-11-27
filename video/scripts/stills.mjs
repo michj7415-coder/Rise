@@ -37,7 +37,7 @@ for (const s of data.scenes)
   }
 
 const serveUrl = await assembler();
-const PRUDENCE = {'s01-intro': 'Avant de commencer', 's09-fourchette': 'Et une règle de sécurité', 's10-sans-obsession': 'Si te fixer un chiffre', 's12-outro': ''};
+const PRUDENCE = {'s01-intro': 'Avant de commencer', 's09-fourchette': 'Et une règle de sécurité', 's10-sans-obsession': 'Si te fixer un chiffre'};
 
 for (const format of liste) {
   const inputProps = {verifier: true};

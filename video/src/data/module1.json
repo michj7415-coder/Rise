@@ -92,10 +92,10 @@
     },
     {
       "id": "s12-outro",
-      "durationSec": 15,
-      "narration": "Ce programme ne remplace pas un avis médical. À tout de suite pour le module 2.",
-      "onScreen": ["Ce programme ne remplace pas un avis médical", "RISE · Module 1 / 9"],
-      "visual": "Fond marine, le logo texte RISE centré, la mention de prudence en dessous.",
+      "durationSec": 8,
+      "narration": "À tout de suite pour le module 2.",
+      "onScreen": ["RISE · Module 1 / 9"],
+      "visual": "Fond marine, le logo texte RISE centré.",
       "animation": "Fondu vers le noir."
     }
   ]

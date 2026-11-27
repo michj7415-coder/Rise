@@ -53,7 +53,6 @@ export const PRUDENCE_MODULE1: Record<string, string> = {
   's01-intro': 'Avant de commencer',
   's09-fourchette': 'Et une règle de sécurité',
   's10-sans-obsession': 'Si te fixer un chiffre',
-  's12-outro': '',
 };
 
 // Étape en cours (0 = objectif … 5 = suivre sans s'obséder) pour la frise en haut à droite.
@@ -638,15 +637,15 @@ const S11: React.FC<PropsScene> = ({scene, cle}) => {
 const S12: React.FC<PropsScene> = ({scene, dureeImages}) => {
   const m = useMise();
   const frame = useCurrentFrame();
-  const [mention, signature] = scene.onScreen;
+  const [signature] = scene.onScreen;
   const noir = interpolate(frame, [dureeImages - 30, dureeImages - 2], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const anneau = useTrace(0, 50);
-  const d = m.v ? 840 : 600;
+  const d = m.v ? 820 : 600;
   return (
     <>
       <Zone gap={m.v ? 70 : 40} style={{alignItems: 'center'}}>
-        <div style={{position: 'relative', width: d, height: d * (m.v ? 0.75 : 0.62), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <svg width={d} height={d} style={{position: 'absolute', top: '50%', left: 0, transform: 'translateY(-50%)'}}>
+        <div style={{position: 'relative', width: d, height: d, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <svg width={d} height={d} style={{position: 'absolute', inset: 0}}>
             <circle cx={d / 2} cy={d / 2} r={d / 2 - 6} fill="none" stroke={C.vert} strokeWidth={4} pathLength={1} strokeDasharray={1} strokeDashoffset={1 - anneau} transform={`rotate(-90 ${d / 2} ${d / 2})`} />
             <circle cx={d / 2} cy={d / 2} r={d / 2 - 40} fill="none" stroke={C.bordure} strokeWidth={2} strokeDasharray="3 12" />
           </svg>
@@ -654,7 +653,6 @@ const S12: React.FC<PropsScene> = ({scene, dureeImages}) => {
             <div style={{fontFamily: POLICE_TITRE, fontWeight: 700, fontSize: m.v ? 270 : 220, letterSpacing: 14, color: C.gris, lineHeight: 1}}>RISE</div>
           </Entree>
         </div>
-        <CartePrudence titre={mention} debut={8} />
         <Entree debut={20}>
           <Texte taille={m.petit} titre gras={500} couleur={C.texteDoux} centre>
             {signature}
