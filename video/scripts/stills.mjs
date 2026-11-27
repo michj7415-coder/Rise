@@ -16,7 +16,7 @@ import {
   composition,
   debutsScenes,
   decouperPhrases,
-  fractionCle,
+  instantCle,
   lireModule,
   navigateur,
   racine,
@@ -74,8 +74,7 @@ for (const format of liste) {
     console.log(`🖼  ${format} ${s.id}`);
     // 3. Carte de prudence ≥ 6 s
     if (s.id in PRUDENCE) {
-      const p = PRUDENCE[s.id] ? fractionCle(s.narration, PRUDENCE[s.id]) : 0;
-      const apparition = 0.1 + p * (durees[i] / FPS - MARGE_FIN - 0.1) + (PRUDENCE[s.id] ? 0 : 8 / FPS);
+      const apparition = instantCle(s.narration, PRUDENCE[s.id], durees[i] / FPS, comp.props.mots?.[s.id]);
       const disparition = durees[i] / FPS - (derniere ? 1.0 : TRANSITION / FPS);
       const visible = disparition - apparition;
       console.log(`   ⚠ carte de prudence visible ${visible.toFixed(1)} s`);

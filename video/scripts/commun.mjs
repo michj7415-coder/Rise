@@ -4,7 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {bundle} from '@remotion/bundler';
 import {selectComposition} from '@remotion/renderer';
-import {MAX_SOUS_TITRE, decouperPhrases, fractionCle, planSousTitres, MARGE_FIN} from '../src/partage/decoupage.js';
+import {MAX_SOUS_TITRE, decouperPhrases, fractionCle, instantCle, planSousTitres, MARGE_FIN} from '../src/partage/decoupage.js';
 
 export const racine = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const FPS = 30;
@@ -43,11 +43,11 @@ const hms = (s) => {
 };
 
 // Fichier .srt : mêmes phrases et mêmes horaires que les sous-titres incrustés.
-export const genererSrt = (data, durees, vertical) => {
+export const genererSrt = (data, durees, vertical, mots) => {
   const debuts = debutsScenes(durees);
   const blocs = [];
   data.scenes.forEach((s, i) => {
-    planSousTitres(s.narration, durees[i] / FPS, vertical ? MAX_SOUS_TITRE.vertical : MAX_SOUS_TITRE.horizontal).forEach((st) => {
+    planSousTitres(s.narration, durees[i] / FPS, vertical ? MAX_SOUS_TITRE.vertical : MAX_SOUS_TITRE.horizontal, mots?.[s.id]).forEach((st) => {
       const a = debuts[i] / FPS + st.debut;
       const b = debuts[i] / FPS + st.fin;
       blocs.push(`${blocs.length + 1}\n${hms(a)} --> ${hms(b)}\n${st.texte}\n`);
@@ -56,4 +56,4 @@ export const genererSrt = (data, durees, vertical) => {
   return blocs.join('\n');
 };
 
-export {decouperPhrases, fractionCle, MARGE_FIN, MAX_SOUS_TITRE};
+export {decouperPhrases, fractionCle, instantCle, MARGE_FIN, MAX_SOUS_TITRE};

@@ -4,7 +4,7 @@ import {CalculateMetadataFunction, Composition, staticFile} from 'remotion';
 import {getAudioDurationInSeconds} from '@remotion/media-utils';
 import {Module, PropsModule, audioExiste, cheminAudio} from './Module';
 import {MODULES} from './modules';
-import {MARGE_FIN, fractionCle} from './partage/decoupage';
+import {MARGE_FIN, fractionCle, instantCle} from './partage/decoupage';
 import {FPS, PRUDENCE_MIN, TRANSITION} from './theme';
 
 // Durée d'une scène : audio + 0,6 s s'il existe, sinon durationSec du JSON.
@@ -13,25 +13,36 @@ import {FPS, PRUDENCE_MIN, TRANSITION} from './theme';
 const calculer: CalculateMetadataFunction<PropsModule> = async ({props}) => {
   const config = MODULES.find((x) => x.data.module === props.module)!;
   const scenes = config.data.scenes;
+  // Horaire réel des mots (créé par scripts/voix/decouper.py), s'il existe.
+  const cheminMots = `audio/m${props.module}/mots.json`;
+  const mots: Record<string, number[]> | undefined = audioExiste(cheminMots)
+    ? await fetch(staticFile(cheminMots)).then((r) => r.json())
+    : undefined;
   const durees = await Promise.all(
     scenes.map(async (s, i) => {
       const chemin = cheminAudio(props.module, s.id);
       let secondes = s.durationSec;
       if (audioExiste(chemin)) secondes = (await getAudioDurationInSeconds(staticFile(chemin))) + MARGE_FIN;
+      // Dernière scène : au moins 4 s, pour que le logo s'affiche avant le fondu au noir.
+      if (i === scenes.length - 1) secondes = Math.max(secondes, 4);
       const cle = config.prudence[s.id];
       if (cle !== undefined) {
-        const p = cle ? fractionCle(s.narration, cle) : 0;
         const derniere = i === scenes.length - 1;
         const apres = (derniere ? 1.0 : TRANSITION / FPS) + 0.3; // fondu de sortie + entrée de la carte
-        // apparition = 0,1 + p × (d − 0,6 − 0,1)  et  d − apparition ≥ 6 s + apres
-        const minimum = (PRUDENCE_MIN + apres + 0.1 - p * (MARGE_FIN + 0.1)) / (1 - p);
-        secondes = Math.max(secondes, minimum);
+        if (mots?.[s.id]) {
+          // Horaire réel : la carte apparaît quand la voix prononce le mot-clé.
+          secondes = Math.max(secondes, instantCle(s.narration, cle, secondes, mots[s.id]) + PRUDENCE_MIN + apres);
+        } else {
+          // Estimation : apparition = 0,1 + p × (d − 0,6 − 0,1)  et  d − apparition ≥ 6 s + apres
+          const p = cle ? fractionCle(s.narration, cle) : 0;
+          secondes = Math.max(secondes, (PRUDENCE_MIN + apres + 0.1 - p * (MARGE_FIN + 0.1)) / (1 - p));
+        }
       }
       return Math.ceil(secondes * FPS);
     }),
   );
   const total = durees.reduce((a, b) => a + b, 0) - TRANSITION * (durees.length - 1);
-  return {durationInFrames: total, props: {...props, durees}};
+  return {durationInFrames: total, props: {...props, durees, mots}};
 };
 
 export const Racine: React.FC = () => (

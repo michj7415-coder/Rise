@@ -1,0 +1,4 @@
+# Outil facultatif de découpage de la voix off (scripts/voix/decouper.py)
+faster-whisper
+librosa
+soundfile

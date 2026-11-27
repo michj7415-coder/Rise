@@ -47,15 +47,28 @@ export function decouperPhrases(texte, max) {
 }
 
 /**
- * Horaires (en secondes, depuis le début de la scène) de chaque sous-titre,
- * répartis sur la durée de la voix au prorata du nombre de caractères.
+ * Horaires (en secondes, depuis le début de la scène) de chaque sous-titre.
+ * Avec « mots » (horaire réel de chaque mot de la voix, voir scripts/voix/decouper.py),
+ * chaque sous-titre commence quand la voix prononce son premier mot.
+ * Sinon, ils sont répartis sur la durée de la voix au prorata du nombre de caractères.
  * @param {string} narration
  * @param {number} dureeScene en secondes
  * @param {number} max
+ * @param {number[] | null} [mots]
  * @returns {{texte: string, debut: number, fin: number}[]}
  */
-export function planSousTitres(narration, dureeScene, max) {
+export function planSousTitres(narration, dureeScene, max, mots) {
   const morceaux = decouperPhrases(narration, max);
+  if (mots && mots.length === narration.split(/\s+/).filter(Boolean).length) {
+    let k = 0;
+    const debuts = morceaux.map((m) => {
+      const t = mots[k];
+      k += m.split(/\s+/).filter(Boolean).length;
+      return Math.max(0, t - 0.08);
+    });
+    const finVoix = Math.min(dureeScene - 0.15, mots[mots.length - 1] + 0.9);
+    return morceaux.map((texte, i) => ({texte, debut: debuts[i], fin: i + 1 < morceaux.length ? debuts[i + 1] : Math.max(finVoix, debuts[i] + 0.5)}));
+  }
   const total = morceaux.reduce((a, m) => a + m.length, 0);
   const debutVoix = 0.1;
   const finVoix = Math.max(debutVoix + 0.5, dureeScene - MARGE_FIN);
@@ -77,6 +90,23 @@ export function planSousTitres(narration, dureeScene, max) {
 export function fractionCle(narration, cle) {
   const i = narration.toLowerCase().indexOf(cle.toLowerCase());
   return i < 0 ? 0 : i / narration.length;
+}
+
+/**
+ * Instant (en secondes, depuis le début de la scène) où un mot-clé est prononcé :
+ * horaire réel si « mots » est fourni, sinon estimation au prorata des caractères.
+ * @param {string} narration
+ * @param {string} cle
+ * @param {number} dureeScene
+ * @param {number[] | null} [mots]
+ */
+export function instantCle(narration, cle, dureeScene, mots) {
+  const i = cle ? narration.toLowerCase().indexOf(cle.toLowerCase()) : 0;
+  if (mots && mots.length === narration.split(/\s+/).filter(Boolean).length) {
+    const indexMot = i <= 0 ? 0 : narration.slice(0, i).split(/\s+/).filter(Boolean).length;
+    return mots[Math.min(indexMot, mots.length - 1)];
+  }
+  return 0.1 + fractionCle(narration, cle) * (dureeScene - MARGE_FIN - 0.1);
 }
 
 /** Nombre maximum de caractères par sous-titre selon le format. */

@@ -7,13 +7,13 @@ import {MAX_SOUS_TITRE, planSousTitres} from '../partage/decoupage';
 import {POLICE_TEXTE} from '../theme';
 import {typo} from './typo';
 
-export const SousTitres: React.FC<{narration: string; dureeImages: number; verifier?: boolean}> = ({narration, dureeImages, verifier}) => {
+export const SousTitres: React.FC<{narration: string; dureeImages: number; mots?: number[]; verifier?: boolean}> = ({narration, dureeImages, mots, verifier}) => {
   const m = useMise();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const plan = useMemo(
-    () => planSousTitres(narration, dureeImages / fps, m.v ? MAX_SOUS_TITRE.vertical : MAX_SOUS_TITRE.horizontal),
-    [narration, dureeImages, fps, m.v],
+    () => planSousTitres(narration, dureeImages / fps, m.v ? MAX_SOUS_TITRE.vertical : MAX_SOUS_TITRE.horizontal, mots),
+    [narration, dureeImages, fps, m.v, mots],
   );
   const t = frame / fps;
   const actuel = plan.find((s) => t >= s.debut && t < s.fin);

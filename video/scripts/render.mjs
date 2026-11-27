@@ -31,6 +31,6 @@ for (const format of formats) {
   });
   // Sous-titres : out/moduleN.srt (découpage 16:9) et out/moduleN-9x16.srt (lignes plus courtes)
   const srt = path.join(racine, 'out', format === '16x9' ? `module${n}.srt` : `module${n}-9x16.srt`);
-  fs.writeFileSync(srt, genererSrt(data, comp.props.durees, format === '9x16'));
+  fs.writeFileSync(srt, genererSrt(data, comp.props.durees, format === '9x16', comp.props.mots));
   console.log(`✅ ${path.relative(racine, sortie)}  +  ${path.relative(racine, srt)}`);
 }

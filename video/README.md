@@ -38,6 +38,20 @@ Avec un fichier audio, la scène dure **la durée de l'audio + 0,6 s**. Sans fic
 `durationSec` du JSON (estimation) et la vidéo a une piste silencieuse. Exception : une scène
 avec une carte de prudence est allongée si nécessaire pour que la carte reste **au moins 6 s** à l'écran.
 
+### Voix enregistrée d'un seul bloc
+
+Si toute la narration est générée en un ou plusieurs fichiers (dans l'ordre), l'outil
+`scripts/voix/decouper.py` la découpe en une voix par scène et calcule l'horaire de chaque mot :
+
+```
+pip install -r scripts/voix/requirements.txt
+python scripts/voix/decouper.py 1 partie1.mp3 partie2.mp3
+```
+
+Il crée `public/audio/m1/<id>.mp3` et `public/audio/m1/mots.json`. Avec ce fichier, chaque élément
+animé apparaît au moment exact où la voix prononce son mot-clé, et chaque sous-titre (vidéo et `.srt`)
+commence quand la voix commence la phrase. Garde le texte identique à la narration du JSON.
+
 ## Ajouter un module
 
 1. Copie `src/data/module1.json` en `src/data/module2.json` et remplace le contenu
